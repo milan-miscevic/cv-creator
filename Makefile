@@ -28,5 +28,5 @@ standards:
 test: standards unit phpstan psalm mutation
 
 unit:
-# $(DOCKER) run --rm php81-cli ./vendor/bin/phpunit
+	$(DOCKER) run --rm php81-cli ./vendor/bin/phpunit
 	$(DOCKER) run --rm $(PHP) ./vendor/bin/phpunit

@@ -7,11 +7,6 @@
     resolveFromConfigFile="true"
 >
     <projectFiles>
-        <!-- #todo remove unnecessary folders -->
-        <directory name="bin" />
-        <directory name="config" />
-        <directory name="data" />
-        <directory name="public" />
         <directory name="src" />
         <directory name="tests" />
         <directory name="view" />
@@ -25,5 +20,11 @@
                 <directory name="tests" />
             </errorLevel>
         </PropertyNotSetInConstructor>
+        <UnresolvableInclude>
+            <errorLevel type="suppress">
+                <directory name="src" />
+                <directory name="tests" />
+            </errorLevel>
+        </UnresolvableInclude>
     </issueHandlers>
 </psalm>

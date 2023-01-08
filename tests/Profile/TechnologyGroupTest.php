@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mmm\Cv\Tests\Profile;
+namespace Mmm\CvCreator\Tests\Profile;
 
-use Mmm\Cv\Profile\Technology;
-use Mmm\Cv\Profile\TechnologyGroup;
+use Mmm\CvCreator\Profile\Technology;
+use Mmm\CvCreator\Profile\TechnologyGroup;
 use PHPUnit\Framework\TestCase;
 
 class TechnologyGroupTest extends TestCase

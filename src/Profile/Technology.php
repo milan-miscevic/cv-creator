@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mmm\Cv\Profile;
+namespace Mmm\CvCreator\Profile;
 
 enum Technology: string implements Technological
 {

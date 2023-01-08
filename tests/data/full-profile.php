@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-use Mmm\Cv\Profile\About;
-use Mmm\Cv\Profile\Config;
-use Mmm\Cv\Profile\Contact;
-use Mmm\Cv\Profile\Education;
-use Mmm\Cv\Profile\Language;
-use Mmm\Cv\Profile\LanguageLevel;
-use Mmm\Cv\Profile\LanguageName;
-use Mmm\Cv\Profile\Link;
-use Mmm\Cv\Profile\Position;
-use Mmm\Cv\Profile\Profile;
-use Mmm\Cv\Profile\Project;
-use Mmm\Cv\Profile\Technology;
-use Mmm\Cv\Profile\TechnologyGroup;
+use Mmm\CvCreator\Profile\About;
+use Mmm\CvCreator\Profile\Config;
+use Mmm\CvCreator\Profile\Contact;
+use Mmm\CvCreator\Profile\Education;
+use Mmm\CvCreator\Profile\Language;
+use Mmm\CvCreator\Profile\LanguageLevel;
+use Mmm\CvCreator\Profile\LanguageName;
+use Mmm\CvCreator\Profile\Link;
+use Mmm\CvCreator\Profile\Position;
+use Mmm\CvCreator\Profile\Profile;
+use Mmm\CvCreator\Profile\Project;
+use Mmm\CvCreator\Profile\Technology;
+use Mmm\CvCreator\Profile\TechnologyGroup;
 
 return new Profile(
     new About(

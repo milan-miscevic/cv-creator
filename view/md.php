@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use Mmm\Cv\Generator\Config;
-use Mmm\Cv\Profile\LanguageLevel;
-use Mmm\Cv\Profile\Profile;
-use Mmm\Cv\Profile\Project;
-use Mmm\Cv\Profile\Technological;
+use Mmm\CvCreator\Generator\Config;
+use Mmm\CvCreator\Profile\LanguageLevel;
+use Mmm\CvCreator\Profile\Profile;
+use Mmm\CvCreator\Profile\Project;
+use Mmm\CvCreator\Profile\Technological;
 
 if (!function_exists('formatDateMd')) {
     function formatDateMd(?DateTimeInterface $dateTime, string $format, string $present, string $locale): string

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Mmm\Cv\Tests\Generator;
+namespace Mmm\CvCreator\Tests\Generator;
 
-use Mmm\Cv\Generator\Config;
-use Mmm\Cv\Generator\Generator;
-use Mmm\Cv\Profile\Profile;
+use Mmm\CvCreator\Generator\Config;
+use Mmm\CvCreator\Generator\Generator;
+use Mmm\CvCreator\Profile\Profile;
 use PHPUnit\Framework\TestCase;
 
 class GeneratorTest extends TestCase
@@ -46,13 +46,6 @@ class GeneratorTest extends TestCase
 
         return [
             [
-                require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'data', 'milan-miscevic.php']),
-                'en',
-                4,
-                'html',
-                implode(DIRECTORY_SEPARATOR, [$rootFolder, 'docs', 'cv.htm']),
-            ],
-            [
                 require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.php']),
                 'en',
                 99,
@@ -65,13 +58,6 @@ class GeneratorTest extends TestCase
                 99,
                 'html',
                 implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.htm']),
-            ],
-            [
-                require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'data', 'milan-miscevic.php']),
-                'en',
-                99,
-                'md',
-                implode(DIRECTORY_SEPARATOR, [$rootFolder, 'docs', 'index.md']),
             ],
         ];
     }

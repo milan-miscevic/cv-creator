@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mmm\Cv\Generator;
+namespace Mmm\CvCreator\Generator;
 
-use Mmm\Cv\Profile\Profile;
+use Mmm\CvCreator\Profile\Profile;
 use Throwable;
 
 class Generator

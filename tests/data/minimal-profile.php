@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use Mmm\Cv\Profile\About;
-use Mmm\Cv\Profile\Config;
-use Mmm\Cv\Profile\Contact;
-use Mmm\Cv\Profile\Profile;
+use Mmm\CvCreator\Profile\About;
+use Mmm\CvCreator\Profile\Config;
+use Mmm\CvCreator\Profile\Contact;
+use Mmm\CvCreator\Profile\Profile;
 
 return new Profile(
     new About(

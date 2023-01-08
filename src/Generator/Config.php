@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mmm\Cv\Generator;
+namespace Mmm\CvCreator\Generator;
 
 class Config
 {

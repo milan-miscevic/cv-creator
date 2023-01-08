@@ -1,15 +1,15 @@
 {
-    "name": "milan-miscevic/php-skeleton",
-    "description": "Starting point for other PHP projects",
+    "name": "milan-miscevic/cv-creator",
+    "description": "CV data structures and generators",
     "license": "MIT",
-    "type": "project",
+    "type": "library",
     "keywords": [
-        "php project",
-        "php template",
-        "skeleton",
-        "skeleton application",
-        "template",
-        "template application"
+        "cv",
+        "cv creator",
+        "cv generator",
+        "html",
+        "md",
+        "profile"
     ],
     "authors": [
         {
@@ -18,7 +18,7 @@
         }
     ],
     "require": {
-        "php": "^8"
+        "php": "^8.1"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.13.2",
@@ -30,12 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Mmm\\PhpSkeleton\\": "src/"
+            "Mmm\\CvCreator\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Mmm\\PhpSkeleton\\Tests\\": "tests/"
+            "Mmm\\CvCreator\\Tests\\": "tests/"
         }
     },
     "config": {

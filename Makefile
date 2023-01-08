@@ -1,15 +1,10 @@
 DOCKER=docker-compose -f ./docker/docker-compose.yml
-# #todo change to cli if needed
-PHP=php82-fpm
+PHP=php82-cli
 
 build: install
 
 coverage:
 	$(DOCKER) run --rm $(PHP) php -dxdebug.mode=coverage ./vendor/bin/phpunit --coverage-text
-
-# #todo remove this rule if not needed
-down:
-	$(DOCKER) down --remove-orphans
 
 fix:
 	$(DOCKER) run --rm $(PHP) ./vendor/bin/php-cs-fixer fix
@@ -32,12 +27,6 @@ standards:
 
 test: standards unit phpstan psalm mutation
 
-# #todo remove unused commands in project
 unit:
-	$(DOCKER) run --rm php80-cli ./vendor/bin/phpunit
 	$(DOCKER) run --rm php81-cli ./vendor/bin/phpunit
 	$(DOCKER) run --rm $(PHP) ./vendor/bin/phpunit
-
-# #todo remove this rule if not needed
-up:
-	$(DOCKER) up -d

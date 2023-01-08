@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.1-cli
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
@@ -6,3 +6,6 @@ RUN apt-get update
 
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
+
+RUN apt install -y libicu-dev && rm -rf /var/lib/apt/lists/*
+RUN docker-php-ext-install intl

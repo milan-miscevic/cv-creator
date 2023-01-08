@@ -6,3 +6,6 @@ RUN apt-get update
 
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
+
+RUN apt install -y libicu-dev && rm -rf /var/lib/apt/lists/*
+RUN docker-php-ext-install intl

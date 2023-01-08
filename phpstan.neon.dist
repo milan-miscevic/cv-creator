@@ -4,11 +4,6 @@ includes:
 parameters:
     level: max
     paths:
-        # #todo remove unnecessary folders
-        - bin
-        - config
-        - data
-        - public
         - src
         - tests
         - view

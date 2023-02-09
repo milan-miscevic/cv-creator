@@ -32,6 +32,7 @@ enum Technology: string implements Technological
     case MongoDB = 'MongoDB';
     case MySQL = 'MySQL';
     case Nginx = 'Nginx';
+    case OpenAPI = 'OpenAPI';
     case PHP = 'PHP';
     case phpBB = 'phpBB';
     case PHPCodeSniffer = 'PHP_CodeSniffer';

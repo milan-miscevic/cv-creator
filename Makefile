@@ -3,6 +3,9 @@ PHP=php82-cli
 
 build: install
 
+cli:
+	$(DOCKER) run $(PHP) bash
+
 coverage:
 	$(DOCKER) run --rm $(PHP) php -dxdebug.mode=coverage ./vendor/bin/phpunit --coverage-text
 

@@ -14,7 +14,7 @@ I am a student without any working experience.
 My City
 
 
-+12 34 567890
+
 [joe.sixpack@example.com](mailto:joe.sixpack@example.com)
 
 

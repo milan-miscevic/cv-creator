@@ -129,7 +129,9 @@ foreach ($profile->positions as $index => $job) {
 <?= $profile->contact->country ?>
 <?php } ?>
 
+<?php if ($profile->contact->phone !== null) { ?>
 <?= $profile->contact->phone ?>
+<?php } ?>
 
 [<?= $profile->contact->email ?>](mailto:<?= $profile->contact->email ?>)
 

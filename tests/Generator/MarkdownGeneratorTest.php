@@ -21,8 +21,7 @@ class MarkdownGeneratorTest extends TestCase
         string $format,
         string $generatedCv
     ): void {
-        $rootFolder = dirname(dirname(dirname(__FILE__)));
-        $generator = new MarkdownGenerator($rootFolder);
+        $generator = new MarkdownGenerator();
 
         $this->assertSame(
             file_get_contents($generatedCv),
@@ -46,18 +45,18 @@ class MarkdownGeneratorTest extends TestCase
 
         return [
             [
-                require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.php']),
-                'en',
-                99,
-                'md',
-                implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.md']),
-            ],
-            [
                 require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.php']),
                 'en',
                 99,
                 'md',
                 implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.md']),
+            ],
+            [
+                require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.php']),
+                'en',
+                99,
+                'md',
+                implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.md']),
             ],
         ];
     }

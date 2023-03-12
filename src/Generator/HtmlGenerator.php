@@ -7,7 +7,7 @@ namespace Mmm\CvCreator\Generator;
 use Mmm\CvCreator\Profile\Profile;
 use Throwable;
 
-class Generator
+class HtmlGenerator
 {
     private const TRANSLATIONS = [
         'en' => [

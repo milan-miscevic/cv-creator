@@ -46,14 +46,14 @@ class HtmlGeneratorTest extends TestCase
 
         return [
             [
-                require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.php']),
+                require_once implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.php']),
                 'en',
                 99,
                 'html',
                 implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.htm']),
             ],
             [
-                require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.php']),
+                require_once implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.php']),
                 'en',
                 99,
                 'html',

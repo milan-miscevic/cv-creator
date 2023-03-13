@@ -45,14 +45,14 @@ class MarkdownGeneratorTest extends TestCase
 
         return [
             [
-                require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.php']),
+                require_once implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.php']),
                 'en',
                 99,
                 'md',
                 implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.md']),
             ],
             [
-                require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.php']),
+                require_once implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.php']),
                 'en',
                 99,
                 'md',

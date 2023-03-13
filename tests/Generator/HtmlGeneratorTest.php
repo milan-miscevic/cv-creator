@@ -40,20 +40,20 @@ class HtmlGeneratorTest extends TestCase
     /**
      * @return mixed[][]
      */
-    public function dataProvider(): array
+    public static function dataProvider(): array
     {
         $rootFolder = dirname(dirname(dirname(__FILE__)));
 
         return [
             [
-                require_once implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.php']),
+                require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.php']),
                 'en',
                 99,
                 'html',
                 implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.htm']),
             ],
             [
-                require_once implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.php']),
+                require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.php']),
                 'en',
                 99,
                 'html',

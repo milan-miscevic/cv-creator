@@ -6,6 +6,7 @@ namespace Mmm\CvCreator\Generator;
 
 use DateTimeInterface;
 use IntlDateFormatter;
+use Mmm\CvCreator\Profile\Language;
 use Mmm\CvCreator\Profile\LanguageLevel;
 use Mmm\CvCreator\Profile\Profile;
 use Mmm\CvCreator\Profile\Project;
@@ -44,6 +45,11 @@ class MarkdownGenerator
         ],
     ];
 
+    private function a(string $text, string $url): string
+    {
+        return sprintf('[%s](%s)', $text, $url);
+    }
+
     private function h1(string $title): string
     {
         return '# ' . $title;
@@ -62,23 +68,6 @@ class MarkdownGenerator
     private function i(string $text): string
     {
         return sprintf('*%s*', $text);
-    }
-
-    private function link(string $text, string $url): string
-    {
-        return sprintf('[%s](%s)', $text, $url);
-    }
-
-    /**
-     * @param LanguageLevel[] $levels
-     */
-    public function formatLanguageLevelsMd(array $levels): string
-    {
-        $f = function (LanguageLevel $level): string {
-            return $level->name;
-        };
-
-        return implode('/', array_map($f, $levels));
     }
 
     public function formatDateMd(?DateTimeInterface $dateTime, string $format, string $present, string $locale): string
@@ -124,23 +113,21 @@ class MarkdownGenerator
     {
         $result = [];
 
-        $translations = self::TRANSLATIONS[$config->language];
-
         $result[] = $this->h1($profile->about->name);
 
-        $result[] = $this->h2($translations['profile']);
+        $result[] = $this->h2(self::TRANSLATIONS[$config->language]['profile']);
         $result[] = $profile->about->summary;
 
         if (count($profile->about->specialties) > 0) {
-            $result[] = $translations['specialties'] . ': ' . implode(', ', $profile->about->specialties) . '.';
+            $result[] = self::TRANSLATIONS[$config->language]['specialties'] . ': ' . implode(', ', $profile->about->specialties) . '.';
         }
 
-        $result[] = $this->h2($translations['recent-work-experience']);
+        $result[] = $this->h2(self::TRANSLATIONS[$config->language]['recent-work-experience']);
         foreach ($profile->positions as $job) {
             $result[] = $this->h3(sprintf(
                 '%s %s %s',
                 $job->role,
-                $translations['at'],
+                self::TRANSLATIONS[$config->language]['at'],
                 (string) $job->company, // @todo remove cast
             ));
 
@@ -149,13 +136,13 @@ class MarkdownGenerator
                 $this->formatDateMd(
                     $job->startDate,
                     $profile->config->positionDateFormat,
-                    $translations['present'],
+                    self::TRANSLATIONS[$config->language]['present'],
                     $profile->config->locale,
                 ),
                 $this->formatDateMd(
                     $job->endDate,
                     $profile->config->positionDateFormat,
-                    $translations['present'],
+                    self::TRANSLATIONS[$config->language]['present'],
                     $profile->config->locale,
                 )
             ));
@@ -163,15 +150,15 @@ class MarkdownGenerator
             $result[] = $job->description;
 
             if (count($job->technologies) > 0) {
-                $result[] = $translations['technologies'] . ': ' . $this->formatTechnologiesMd($job->technologies) . '.';
+                $result[] = self::TRANSLATIONS[$config->language]['technologies'] . ': ' . $this->formatTechnologiesMd($job->technologies) . '.';
             }
 
             if (count($job->projects) > 0) {
-                $result[] = ((count($job->projects) > 1) ? $translations['projects'] : $translations['project']) . ': ' . $this->formatProjectsMd($job->projects);
+                $result[] = ((count($job->projects) > 1) ? self::TRANSLATIONS[$config->language]['projects'] : self::TRANSLATIONS[$config->language]['project']) . ': ' . $this->formatProjectsMd($job->projects);
             }
         }
 
-        $result[] = $this->h2($translations['education']);
+        $result[] = $this->h2(self::TRANSLATIONS[$config->language]['education']);
         foreach ($profile->educations as $degree) {
             $result[] = $this->h3(sprintf(
                 '%s, %s, %s',
@@ -184,33 +171,42 @@ class MarkdownGenerator
                 $this->formatDateMd(
                     $degree->graduationDate,
                     $profile->config->educationDateFormat,
-                    $translations['present'],
+                    self::TRANSLATIONS[$config->language]['present'],
                     $profile->config->locale,
                 )
             ));
         }
 
-        $result[] = $this->h2($translations['details']);
+        $result[] = $this->h2(self::TRANSLATIONS[$config->language]['details']);
         $result[] = $profile->contact->city;
         $result[] = $profile->contact->country;
         $result[] = $profile->contact->phone;
-        $result[] = $this->link($profile->contact->email, 'mailto:' . $profile->contact->email);
+        $result[] = $this->a($profile->contact->email, 'mailto:' . $profile->contact->email);
         $result[] = $profile->contact->skype ? 'Skype: ' . $profile->contact->skype : null;
 
-        $result[] = $this->h2($translations['links']);
+        $result[] = $this->h2(self::TRANSLATIONS[$config->language]['links']);
         foreach ($profile->links as $link) {
-            $result[] = $this->link($link->name, $link->url);
+            $result[] = $this->a($link->name, $link->url);
         }
 
-        $result[] = $this->h2($translations['languages']);
+        $result[] = $this->h2(self::TRANSLATIONS[$config->language]['languages']);
         foreach ($profile->languages as $language) {
-            $result[] = sprintf(
-                '%s (%s)',
-                $language->name->name,
-                $this->formatLanguageLevelsMd($language->level)
-            );
+            $result[] = $this->language($language);
         }
 
         return implode("\n\n", array_filter($result)) . "\n";
+    }
+
+    private function language(Language $language): string
+    {
+        $f = function (LanguageLevel $level): string {
+            return $level->name;
+        };
+
+        return sprintf(
+            '%s (%s)',
+            $language->name->name,
+            implode('/', array_map($f, $language->level)),
+        );
     }
 }

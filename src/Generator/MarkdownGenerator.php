@@ -102,7 +102,7 @@ class MarkdownGenerator
                     '%s %s %s',
                     $job->role,
                     $this->translator->t('at', $config->language),
-                    (string) $job->company, // @todo remove cast
+                    $job->company,
                 ));
             } else {
                 $result[] = $this->h3($job->role);

@@ -20,7 +20,7 @@ class HtmlGeneratorTest extends TestCase
         string $language,
         int $recentPositionsCount,
         string $format,
-        string $generatedCv
+        string $generatedCv,
     ): void {
         $rootFolder = dirname(dirname(dirname(__FILE__)));
         $generator = new HtmlGenerator(new Translator(), $rootFolder);

@@ -20,7 +20,7 @@ class MarkdownGeneratorTest extends TestCase
         string $language,
         int $recentPositionsCount,
         string $format,
-        string $generatedCv
+        string $generatedCv,
     ): void {
         $generator = new MarkdownGenerator(new Translator());
 

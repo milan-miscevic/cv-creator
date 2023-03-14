@@ -97,12 +97,16 @@ class MarkdownGenerator
 
         $result[] = $this->h2($this->translator->t('recent-work-experience', $config->language));
         foreach ($profile->positions as $job) {
-            $result[] = $this->h3(sprintf(
-                '%s %s %s',
-                $job->role,
-                $this->translator->t('at', $config->language),
-                (string) $job->company, // @todo remove cast
-            ));
+            if ($job->company !== null) {
+                $result[] = $this->h3(sprintf(
+                    '%s %s %s',
+                    $job->role,
+                    $this->translator->t('at', $config->language),
+                    (string) $job->company, // @todo remove cast
+                ));
+            } else {
+                $result[] = $this->h3($job->role);
+            }
 
             $result[] = $this->i(sprintf(
                 '%s – %s',

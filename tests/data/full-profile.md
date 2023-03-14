@@ -28,7 +28,7 @@ Technologies: Java, Linux.
 
 Project: [Example.com](https://www.example.com/)
 
-### Volunteer at 
+### Volunteer
 
 *2015 – Present*
 

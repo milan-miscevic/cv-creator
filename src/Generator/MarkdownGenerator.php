@@ -14,36 +14,9 @@ use Mmm\CvCreator\Profile\Technological;
 
 class MarkdownGenerator
 {
-    private const TRANSLATIONS = [
-        'en' => [
-            'at' => 'at',
-            'details' => 'Details',
-            'education' => 'Education',
-            'languages' => 'Languages',
-            'links' => 'Links',
-            'present' => 'Present',
-            'profile' => 'Profile',
-            'project' => 'Project',
-            'projects' => 'Projects',
-            'recent-work-experience' => 'Recent work experience',
-            'specialties' => 'Specialties',
-            'technologies' => 'Technologies',
-        ],
-        'de' => [
-            'at' => 'bei',
-            'details' => 'Kontaktdetails',
-            'education' => 'Ausbildung',
-            'languages' => 'Sprachen',
-            'links' => 'Links',
-            'present' => 'heute',
-            'profile' => 'Profil',
-            'project' => '@todo',
-            'projects' => '@todo',
-            'recent-work-experience' => 'Werdegang',
-            'specialties' => '@todo',
-            'technologies' => '@todo',
-        ],
-    ];
+    public function __construct(private Translator $translator)
+    {
+    }
 
     private function a(string $text, string $url): string
     {
@@ -115,19 +88,19 @@ class MarkdownGenerator
 
         $result[] = $this->h1($profile->about->name);
 
-        $result[] = $this->h2(self::TRANSLATIONS[$config->language]['profile']);
+        $result[] = $this->h2($this->translator->t('profile', $config->language));
         $result[] = $profile->about->summary;
 
         if (count($profile->about->specialties) > 0) {
-            $result[] = self::TRANSLATIONS[$config->language]['specialties'] . ': ' . implode(', ', $profile->about->specialties) . '.';
+            $result[] = $this->translator->t('specialties', $config->language) . ': ' . implode(', ', $profile->about->specialties) . '.';
         }
 
-        $result[] = $this->h2(self::TRANSLATIONS[$config->language]['recent-work-experience']);
+        $result[] = $this->h2($this->translator->t('recent-work-experience', $config->language));
         foreach ($profile->positions as $job) {
             $result[] = $this->h3(sprintf(
                 '%s %s %s',
                 $job->role,
-                self::TRANSLATIONS[$config->language]['at'],
+                $this->translator->t('at', $config->language),
                 (string) $job->company, // @todo remove cast
             ));
 
@@ -136,13 +109,13 @@ class MarkdownGenerator
                 $this->formatDateMd(
                     $job->startDate,
                     $profile->config->positionDateFormat,
-                    self::TRANSLATIONS[$config->language]['present'],
+                    $this->translator->t('present', $config->language),
                     $profile->config->locale,
                 ),
                 $this->formatDateMd(
                     $job->endDate,
                     $profile->config->positionDateFormat,
-                    self::TRANSLATIONS[$config->language]['present'],
+                    $this->translator->t('present', $config->language),
                     $profile->config->locale,
                 )
             ));
@@ -150,15 +123,15 @@ class MarkdownGenerator
             $result[] = $job->description;
 
             if (count($job->technologies) > 0) {
-                $result[] = self::TRANSLATIONS[$config->language]['technologies'] . ': ' . $this->formatTechnologiesMd($job->technologies) . '.';
+                $result[] = $this->translator->t('technologies', $config->language) . ': ' . $this->formatTechnologiesMd($job->technologies) . '.';
             }
 
             if (count($job->projects) > 0) {
-                $result[] = ((count($job->projects) > 1) ? self::TRANSLATIONS[$config->language]['projects'] : self::TRANSLATIONS[$config->language]['project']) . ': ' . $this->formatProjectsMd($job->projects);
+                $result[] = ((count($job->projects) > 1) ? $this->translator->t('projects', $config->language) : $this->translator->t('project', $config->language)) . ': ' . $this->formatProjectsMd($job->projects);
             }
         }
 
-        $result[] = $this->h2(self::TRANSLATIONS[$config->language]['education']);
+        $result[] = $this->h2($this->translator->t('education', $config->language));
         foreach ($profile->educations as $degree) {
             $result[] = $this->h3(sprintf(
                 '%s, %s, %s',
@@ -171,25 +144,25 @@ class MarkdownGenerator
                 $this->formatDateMd(
                     $degree->graduationDate,
                     $profile->config->educationDateFormat,
-                    self::TRANSLATIONS[$config->language]['present'],
+                    $this->translator->t('present', $config->language),
                     $profile->config->locale,
                 )
             ));
         }
 
-        $result[] = $this->h2(self::TRANSLATIONS[$config->language]['details']);
+        $result[] = $this->h2($this->translator->t('details', $config->language));
         $result[] = $profile->contact->city;
         $result[] = $profile->contact->country;
         $result[] = $profile->contact->phone;
         $result[] = $this->a($profile->contact->email, 'mailto:' . $profile->contact->email);
         $result[] = $profile->contact->skype ? 'Skype: ' . $profile->contact->skype : null;
 
-        $result[] = $this->h2(self::TRANSLATIONS[$config->language]['links']);
+        $result[] = $this->h2($this->translator->t('links', $config->language));
         foreach ($profile->links as $link) {
             $result[] = $this->a($link->name, $link->url);
         }
 
-        $result[] = $this->h2(self::TRANSLATIONS[$config->language]['languages']);
+        $result[] = $this->h2($this->translator->t('languages', $config->language));
         foreach ($profile->languages as $language) {
             $result[] = $this->language($language);
         }

@@ -6,6 +6,7 @@ namespace Mmm\CvCreator\Tests\Generator;
 
 use Mmm\CvCreator\Generator\Config;
 use Mmm\CvCreator\Generator\MarkdownGenerator;
+use Mmm\CvCreator\Generator\Translator;
 use Mmm\CvCreator\Profile\Profile;
 use PHPUnit\Framework\TestCase;
 
@@ -21,7 +22,7 @@ class MarkdownGeneratorTest extends TestCase
         string $format,
         string $generatedCv
     ): void {
-        $generator = new MarkdownGenerator();
+        $generator = new MarkdownGenerator(new Translator());
 
         $this->assertSame(
             file_get_contents($generatedCv),

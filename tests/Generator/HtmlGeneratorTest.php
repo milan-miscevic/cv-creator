@@ -6,6 +6,7 @@ namespace Mmm\CvCreator\Tests\Generator;
 
 use Mmm\CvCreator\Generator\Config;
 use Mmm\CvCreator\Generator\HtmlGenerator;
+use Mmm\CvCreator\Generator\Translator;
 use Mmm\CvCreator\Profile\Profile;
 use PHPUnit\Framework\TestCase;
 
@@ -22,7 +23,7 @@ class HtmlGeneratorTest extends TestCase
         string $generatedCv
     ): void {
         $rootFolder = dirname(dirname(dirname(__FILE__)));
-        $generator = new HtmlGenerator($rootFolder);
+        $generator = new HtmlGenerator(new Translator(), $rootFolder);
 
         $this->assertSame(
             file_get_contents($generatedCv),

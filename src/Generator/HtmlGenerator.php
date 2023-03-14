@@ -9,39 +9,10 @@ use Throwable;
 
 class HtmlGenerator
 {
-    private const TRANSLATIONS = [
-        'en' => [
-            'at' => 'at',
-            'details' => 'Details',
-            'education' => 'Education',
-            'languages' => 'Languages',
-            'links' => 'Links',
-            'present' => 'Present',
-            'profile' => 'Profile',
-            'project' => 'Project',
-            'projects' => 'Projects',
-            'recent-work-experience' => 'Recent work experience',
-            'specialties' => 'Specialties',
-            'technologies' => 'Technologies',
-        ],
-        'de' => [
-            'at' => 'bei',
-            'details' => 'Kontaktdetails',
-            'education' => 'Ausbildung',
-            'languages' => 'Sprachen',
-            'links' => 'Links',
-            'present' => 'heute',
-            'profile' => 'Profil',
-            'project' => '@todo',
-            'projects' => '@todo',
-            'recent-work-experience' => 'Werdegang',
-            'specialties' => '@todo',
-            'technologies' => '@todo',
-        ],
-    ];
-
-    public function __construct(private string $rootFolder)
-    {
+    public function __construct(
+        private Translator $translator,
+        private string $rootFolder,
+    ) {
     }
 
     public function generate(Profile $profile, Config $config): string
@@ -49,7 +20,7 @@ class HtmlGenerator
         try {
             $template = $this->rootFolder . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . $config->format . '.php';
 
-            $toExtract = ['translations' => self::TRANSLATIONS[$config->language]];
+            $toExtract = ['translations' => $this->translator->pull($config->language)];
             extract($toExtract);
 
             ob_start();

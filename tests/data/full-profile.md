@@ -28,14 +28,11 @@ Technologies: Java, Linux.
 
 Project: [Example.com](https://www.example.com/)
 
-### Volunteer at 
+### Volunteer
 
 *2015 – Present*
 
 Volunteer to various organizations.
-
-
-
 
 ## Education
 
@@ -52,7 +49,9 @@ Volunteer to various organizations.
 My City
 
 My Country
+
 +12 34 567890
+
 [jane.smith@example.com](mailto:jane.smith@example.com)
 
 Skype: jane.smith
@@ -72,4 +71,3 @@ German (C1)
 Spanish (B1)
 
 Chinese (A1)
-

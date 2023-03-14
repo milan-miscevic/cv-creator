@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace Mmm\CvCreator\Generator;
 
-use Mmm\CvCreator\Profile\Profile;
-use Throwable;
-
-class Generator
+class Translator
 {
     private const TRANSLATIONS = [
         'en' => [
@@ -40,27 +37,16 @@ class Generator
         ],
     ];
 
-    public function __construct(private string $rootFolder)
+    public function t(string $text, string $language): string
     {
+        return self::TRANSLATIONS[$language][$text] ?? $text;
     }
 
-    public function generate(Profile $profile, Config $config): string
+    /**
+     * @return array<string, string>
+     */
+    public function pull(string $language): array
     {
-        try {
-            $template = $this->rootFolder . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . $config->format . '.php';
-
-            $toExtract = ['translations' => self::TRANSLATIONS[$config->language]];
-            extract($toExtract);
-
-            ob_start();
-            require $template;
-            $content = (string) ob_get_contents();
-            ob_end_clean();
-
-            return $content;
-        } catch (Throwable $ex) {
-            echo $ex->getMessage();
-            throw $ex;
-        }
+        return self::TRANSLATIONS[$language];
     }
 }

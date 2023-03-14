@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Mmm\CvCreator\Tests\Generator;
 
 use Mmm\CvCreator\Generator\Config;
-use Mmm\CvCreator\Generator\Generator;
+use Mmm\CvCreator\Generator\MarkdownGenerator;
+use Mmm\CvCreator\Generator\Translator;
 use Mmm\CvCreator\Profile\Profile;
 use PHPUnit\Framework\TestCase;
 
-class GeneratorTest extends TestCase
+class MarkdownGeneratorTest extends TestCase
 {
     /**
      * @dataProvider dataProvider
@@ -19,10 +20,9 @@ class GeneratorTest extends TestCase
         string $language,
         int $recentPositionsCount,
         string $format,
-        string $generatedCv
+        string $generatedCv,
     ): void {
-        $rootFolder = dirname(dirname(dirname(__FILE__)));
-        $generator = new Generator($rootFolder);
+        $generator = new MarkdownGenerator(new Translator());
 
         $this->assertSame(
             file_get_contents($generatedCv),
@@ -40,24 +40,17 @@ class GeneratorTest extends TestCase
     /**
      * @return mixed[][]
      */
-    public function dataProvider(): array
+    public static function dataProvider(): array
     {
         $rootFolder = dirname(dirname(dirname(__FILE__)));
 
         return [
             [
-                require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.php']),
-                'en',
-                99,
-                'html',
-                implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.htm']),
-            ],
-            [
                 require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.php']),
                 'en',
                 99,
-                'html',
-                implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.htm']),
+                'md',
+                implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.md']),
             ],
             [
                 require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.php']),
@@ -65,13 +58,6 @@ class GeneratorTest extends TestCase
                 99,
                 'md',
                 implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'minimal-profile.md']),
-            ],
-            [
-                require implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.php']),
-                'en',
-                99,
-                'md',
-                implode(DIRECTORY_SEPARATOR, [$rootFolder, 'tests', 'data', 'full-profile.md']),
             ],
         ];
     }

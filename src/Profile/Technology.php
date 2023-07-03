@@ -7,6 +7,7 @@ namespace Mmm\CvCreator\Profile;
 enum Technology: string implements Technological
 {
     case Apache = 'Apache';
+    case AWS = 'AWS';
     case Behat = 'Behat';
     case C = 'C';
     case Capistrano = 'Capistrano';
@@ -20,6 +21,7 @@ enum Technology: string implements Technological
     case Git = 'Git';
     case GitHubActions = 'GitHub Actions';
     case Go = 'Go';
+    case Grafana = 'Grafana';
     case GraphQL = 'GraphQL';
     case Grunt = 'Grunt';
     case Java = 'Java';

@@ -89,6 +89,7 @@ if (!function_exists('formatDate')) {
 
 <h1><?= $profile->about->name ?></h1>
 <h3><?= $profile->about->occupation ?></h3>
+<br>
 
 <table>
     <tr>

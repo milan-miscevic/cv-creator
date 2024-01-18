@@ -81,26 +81,14 @@ if (!function_exists('formatDate')) {
 
 <body>
 
-<?php if ($profile->about->picture !== null) { ?>
-<table>
-    <tr>
-        <td><img src="<?= $profile->about->picture ?>" height="130" alt="applicant picture"></td>
-        <td style="padding: 30px;">
-            <h1><?= $profile->about->name ?></h1>
-            <h3><?= $profile->about->occupation ?></h3>
-        </td>
-    </tr>
-</table>
-<?php } else { ?>
-<h1><?= $profile->about->name ?></h1>
-<h3><?= $profile->about->occupation ?></h3>
-<?php }?>
-
 <br>
 
 <table>
 <tr>
 <td class="left">
+
+<h1><?= $profile->about->name ?></h1>
+<h3><?= $profile->about->occupation ?></h3>
 
 <table>
     <tr>
@@ -189,6 +177,11 @@ if (!function_exists('formatDate')) {
 <table>
 <tr>
 <td>
+
+<?php if ($profile->about->picture !== null) { ?>
+<img src="<?= $profile->about->picture ?>" height="130" alt="applicant picture">
+<br><br>
+<?php }?>
 
 <span class="section"><?= $translations['details'] ?></span>
 <br>

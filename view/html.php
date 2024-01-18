@@ -92,19 +92,6 @@ if (!function_exists('formatDate')) {
 
 <table>
     <tr>
-        <td><img src="images/profile-12x12.png" alt="profile section logo"></td>
-        <td>
-            <p class="section"><?= $translations['profile'] ?></p>
-            <p><?= $profile->about->summary ?></p>
-<?php if (count($profile->about->specialties) > 0) { ?>
-            <p><?= $translations['specialties'] ?>: <?= implode(', ', $profile->about->specialties) ?>.</p>
-<?php } ?>
-        </td>
-    </tr>
-</table>
-
-<table>
-    <tr>
         <td><img src="images/employment-12x12.png" alt="work experience section logo"></td>
         <td>
             <div>

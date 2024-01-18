@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Mmm\CvCreator\Generator\Config;
 use Mmm\CvCreator\Profile\LanguageLevel;
+use Mmm\CvCreator\Profile\LanguageName;
 use Mmm\CvCreator\Profile\Profile;
 use Mmm\CvCreator\Profile\Project;
 use Mmm\CvCreator\Profile\Technological;
@@ -46,6 +47,15 @@ if (!function_exists('formatDate')) {
         };
 
         return implode(', ', array_map($f, $projects));
+    }
+
+    function formatLanguageName(LanguageName|string $name): string
+    {
+        if (is_string($name)) {
+            return $name;
+        }
+
+        return $name->name;
     }
 
     /**
@@ -206,7 +216,7 @@ Skype: <?= $profile->contact->skype ?>
 <span class="section"><?= $translations['languages'] ?></span>
 <?php foreach ($profile->languages as $language) { ?>
 <br>
-<?= $language->name->name ?> (<?= formatLanguageLevels($language->level) ?>)
+<?= formatLanguageName($language->name) ?> (<?= formatLanguageLevels($language->level) ?>)
 <?php } ?>
 
 </td>

@@ -7,7 +7,7 @@ namespace Mmm\CvCreator\Profile;
 class Language
 {
     public function __construct(
-        public LanguageName $name,
+        public LanguageName|string $name,
         /** @var (LanguageLevel|string)[] */
         public array $level,
     ) {

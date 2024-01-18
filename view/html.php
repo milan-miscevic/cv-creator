@@ -49,11 +49,15 @@ if (!function_exists('formatDate')) {
     }
 
     /**
-     * @param LanguageLevel[] $levels
+     * @param (LanguageLevel|string)[] $levels
      */
     function formatLanguageLevels(array $levels): string
     {
-        $f = function (LanguageLevel $level): string {
+        $f = function (LanguageLevel|string $level): string {
+            if (is_string($level)) {
+                return $level;
+            }
+
             return $level->name;
         };
 

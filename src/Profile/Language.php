@@ -8,7 +8,7 @@ class Language
 {
     public function __construct(
         public LanguageName $name,
-        /** @var LanguageLevel[] */
+        /** @var (LanguageLevel|string)[] */
         public array $level,
     ) {
     }

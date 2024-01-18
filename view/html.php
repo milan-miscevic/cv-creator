@@ -181,7 +181,7 @@ if (!function_exists('formatDate')) {
 <td>
 
 <?php if ($profile->about->picture !== null) { ?>
-<img src="<?= $profile->about->picture ?>" height="130" alt="applicant picture">
+<img src="<?= $profile->about->picture ?>" height="250" alt="applicant picture">
 <br><br>
 <?php }?>
 

@@ -208,6 +208,22 @@ Skype: <?= $profile->contact->skype ?>
 <?= formatLanguageName($language->name) ?> (<?= formatLanguageLevels($language->level) ?>)
 <?php } ?>
 
+<br><br>
+
+<span class="section">Software</span>
+<?php foreach ($profile->software as $software) { ?>
+<br>
+<?= $software->name ?> (<?= $software->level ?>)
+<?php } ?>
+
+<br><br>
+
+<span class="section">Persönliche Stärken</span>
+<?php foreach ($profile->skills as $skill) { ?>
+<br>
+<?= $skill->name ?>
+<?php } ?>
+
 </td>
 </tr>
 </table>

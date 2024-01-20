@@ -120,17 +120,6 @@ if (!function_exists('formatDate')) {
                     echo ' class=topmargin';
                 } ?>>
                     <p>
-                        <span class="role">
-                            <?= $job->role ?>
-                            <?php
-                                $company = '';
-                if ($job->company !== null) {
-                    $company = $translations['at'] . ' ' . $job->company;
-                }
-                echo $company;
-                ?>
-                        </span>
-                        <br>
                         <span class="timespan">
                             <?= formatDate($job->startDate, $profile->config->positionDateFormat, $translations['present'], $profile->config->locale) ?> –
                             <?= formatDate($job->endDate, $profile->config->positionDateFormat, $translations['present'], $profile->config->locale) ?>

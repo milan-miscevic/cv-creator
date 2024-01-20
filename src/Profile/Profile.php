@@ -18,6 +18,10 @@ class Profile
         /** @var Language[] */
         public array $languages,
         public Config $config,
+        /** @var Software[] */
+        public array $software = [],
+        /** @var Skill[] */
+        public array $skills = [],
     ) {
     }
 }

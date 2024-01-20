@@ -12,6 +12,7 @@ class Contact
         public ?string $phone,
         public string $email,
         public ?string $skype,
+        public ?string $address = null,
     ) {
     }
 }

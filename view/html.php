@@ -219,10 +219,11 @@ Skype: <?= $profile->contact->skype ?>
 <br><br>
 
 <span class="section">Persönliche Stärken</span>
+<ul>
 <?php foreach ($profile->skills as $skill) { ?>
-<br>
-<?= $skill->name ?>
+<li><?= $skill->name ?></li>
 <?php } ?>
+</ul>
 
 </td>
 </tr>

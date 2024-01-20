@@ -175,6 +175,10 @@ if (!function_exists('formatDate')) {
 <?php }?>
 
 <span class="section"><?= $translations['details'] ?></span>
+<?php if ($profile->contact->address !== null) { ?>
+<?= $profile->contact->address ?>
+<br>
+<?php } ?>
 <br>
 <?= $profile->contact->city ?>
 <br>

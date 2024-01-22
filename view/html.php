@@ -186,8 +186,10 @@ if (!function_exists('formatDate')) {
 <?= $profile->contact->country ?>
 <br>
 <?php } ?>
+<?php if ($profile->contact->phone !== null) { ?>
 <?= $profile->contact->phone ?>
 <br>
+<?php } ?>
 <a href="mailto:<?= $profile->contact->email ?>"><?= $profile->contact->email ?></a>
 <?php if ($profile->contact->skype !== null) { ?>
 <br>

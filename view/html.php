@@ -153,7 +153,11 @@ if (!function_exists('formatDate')) {
             <p>
                 <span class="role"><?= $degree->degree ?>, <?= $degree->school ?>, <?= $degree->location ?></span>
                 <br>
-                <span class="timespan"><?= formatDate($degree->graduationDate, $profile->config->educationDateFormat, $translations['present'], $profile->config->locale) ?></span>
+                <span class="timespan">
+                    <?= formatDate($degree->startDate, $profile->config->educationDateFormat, $translations['present'], $profile->config->locale) ?>
+                    -
+                    <?= formatDate($degree->graduationDate, $profile->config->educationDateFormat, $translations['present'], $profile->config->locale) ?>
+                </span>
             </p>
 <?php } ?>
         </td>

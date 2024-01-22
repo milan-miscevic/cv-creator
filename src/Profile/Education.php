@@ -13,6 +13,7 @@ class Education
         public string $school,
         public string $location,
         public ?DateTimeInterface $graduationDate,
+        public ?DateTimeInterface $startDate = null,
     ) {
     }
 }
